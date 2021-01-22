@@ -6,7 +6,7 @@ use crate::{
 };
 use druid::{
     widget::{CrossAxisAlignment, Either, Flex, Label, Scroll, Split, ViewSwitcher},
-    Insets, Widget, WidgetExt, WindowDesc,
+    Insets, Widget, WidgetExt, WindowDesc, WindowSizePolicy,
 };
 use icons::SvgIcon;
 
@@ -34,7 +34,7 @@ pub fn make_config_window() -> WindowDesc<State> {
     WindowDesc::new(make_config)
         .title("Preferences")
         .menu(menu::make_menu())
-        .window_size((theme::grid(50.0), theme::grid(67.0)))
+        .window_size_policy(WindowSizePolicy::Content)
         .resizable(false)
 }
 
@@ -43,7 +43,7 @@ fn make_config() -> impl Widget<State> {
         config::make_config()
             .center()
             .background(theme::BACKGROUND_DARK)
-            .expand(),
+            .fix_width(theme::grid(50.0)),
     )
 }
 

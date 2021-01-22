@@ -187,7 +187,8 @@ fn make_config_cache() -> impl Widget<State> {
                     format!("{:.2} MB", b as f64 / 1e6 as f64)
                 }
             },
-        ));
+        ))
+        .with_spacer(theme::grid(3.0));
 
     col.controller(MeasureCacheSize::new())
         .lens(State::preferences)
